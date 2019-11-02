@@ -8,34 +8,34 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
 
   let alphabet = ["A", "B", "C", "D"]
-  @IBOutlet weak var myTableView: UITableView!
+  @IBOutlet override weak var tableView: UITableView!
   
   let cellId = "cellId"
   override func viewDidLoad() {
     super.viewDidLoad()
    
-    myTableView.dataSource = self
-    myTableView.delegate = self
+//    myTableView.dataSource = self
+//    myTableView.delegate = self
     
   }
 }
 
-extension ViewController: UITableViewDataSource {
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ViewController {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return alphabet.count
   }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
     cell.textLabel?.text = alphabet[indexPath.row]
     return cell
   }
 }
 
-extension ViewController: UITableViewDelegate {
+extension ViewController {
   
 }
 
